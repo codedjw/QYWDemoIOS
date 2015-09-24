@@ -21,6 +21,7 @@ static NSString* const kHomeItemCell = @"HomeItemCell";
 
 @interface HomeTableViewController ()<UICollectionViewDataSource, UICollectionViewDelegate>
 @property(nonatomic, strong)NSArray* homeItems;
+- (IBAction)editPatientInfo:(id)sender;
 @end
 
 @implementation HomeTableViewController
@@ -130,5 +131,7 @@ static NSString* const kHomeItemCell = @"HomeItemCell";
         cell.titleLabel.text = dict[@"label"];
     }
     return cell;
+}
+- (IBAction)editPatientInfo:(id)sender {
 }
 @end
