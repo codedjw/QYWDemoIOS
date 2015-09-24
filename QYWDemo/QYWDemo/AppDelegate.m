@@ -24,6 +24,7 @@
         [[UITableViewCell appearance] setPreservesSuperviewLayoutMargins:NO];
         
     }
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     return YES;
 }
 

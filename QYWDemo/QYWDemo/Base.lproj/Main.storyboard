@@ -9,7 +9,7 @@
         <scene sceneID="qnL-hM-C8i">
             <objects>
                 <tableViewController id="nA3-mc-eBx" customClass="HomeTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="9DW-iD-6ic">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="static" style="plain" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="9DW-iD-6ic">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="545"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -324,7 +324,7 @@
                                                                 <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
                                                             </attributes>
                                                         </fragment>
-                                                        <fragment content="！ 趣医院让您在手机上即可轻松完成预约挂号、">
+                                                        <fragment content="！ 趣医院让您在手机上即可轻松完成预约挂号">
                                                             <attributes>
                                                                 <color key="NSColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <font key="NSFont" size="13" name="STHeitiSC-Light"/>
@@ -402,7 +402,7 @@
         <!--Home View Controller-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
-                <viewController id="9pv-A4-QxB" customClass="HomeViewController" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="9pv-A4-QxB" customClass="HomeViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ia1-K6-d13"/>
                         <viewControllerLayoutGuide type="bottom" id="4ug-Mw-9AY"/>
@@ -411,48 +411,63 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" placeholder="请选择医院、科室、医生" translatesAutoresizingMaskIntoConstraints="NO" id="b6z-gX-gFb">
-                                <rect key="frame" x="94" y="20" width="226" height="44"/>
-                                <color key="barTintColor" red="0.13725490196078433" green="0.47058823529411764" blue="0.19607843137254902" alpha="1" colorSpace="calibratedRGB"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <outlet property="delegate" destination="9pv-A4-QxB" id="cce-YS-7wy"/>
-                                </connections>
-                            </searchBar>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8od-e5-dmo">
                                 <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                                 <connections>
                                     <segue destination="nA3-mc-eBx" kind="embed" id="cet-xf-zuB"/>
                                 </connections>
                             </containerView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="navigation.png" translatesAutoresizingMaskIntoConstraints="NO" id="QjW-Hf-5RE">
-                                <rect key="frame" x="3" y="28" width="27" height="28"/>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fnN-HF-Qg1">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
+                                <subviews>
+                                    <searchBar contentMode="redraw" misplaced="YES" placeholder="请选择医院、科室、医生" translatesAutoresizingMaskIntoConstraints="NO" id="b6z-gX-gFb">
+                                        <rect key="frame" x="94" y="20" width="226" height="44"/>
+                                        <color key="barTintColor" red="0.13725490196078433" green="0.47058823529411764" blue="0.19607843137254902" alpha="1" colorSpace="calibratedRGB"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="9pv-A4-QxB" id="cce-YS-7wy"/>
+                                        </connections>
+                                    </searchBar>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="navigation.png" translatesAutoresizingMaskIntoConstraints="NO" id="QjW-Hf-5RE">
+                                        <rect key="frame" x="8" y="28" width="27" height="28"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="28" id="D92-d0-CVP"/>
+                                            <constraint firstAttribute="width" constant="27" id="d1q-fW-AXw"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="请选择" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bb7-br-NVe">
+                                        <rect key="frame" x="38" y="31" width="51" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.1647058824" green="0.53333333329999999" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="28" id="D92-d0-CVP"/>
-                                    <constraint firstAttribute="width" constant="27" id="d1q-fW-AXw"/>
+                                    <constraint firstItem="b6z-gX-gFb" firstAttribute="top" secondItem="fnN-HF-Qg1" secondAttribute="top" constant="20" id="27X-vg-m0b"/>
+                                    <constraint firstAttribute="trailing" secondItem="b6z-gX-gFb" secondAttribute="trailing" id="74E-yc-419"/>
+                                    <constraint firstItem="QjW-Hf-5RE" firstAttribute="top" secondItem="fnN-HF-Qg1" secondAttribute="top" constant="28" id="Hpl-4j-EtH"/>
+                                    <constraint firstItem="Bb7-br-NVe" firstAttribute="leading" secondItem="QjW-Hf-5RE" secondAttribute="trailing" constant="3" id="P9O-gY-JTQ"/>
+                                    <constraint firstItem="Bb7-br-NVe" firstAttribute="top" secondItem="fnN-HF-Qg1" secondAttribute="top" constant="31" id="Waj-1A-u8n"/>
+                                    <constraint firstItem="b6z-gX-gFb" firstAttribute="leading" secondItem="Bb7-br-NVe" secondAttribute="trailing" constant="5" id="ZBH-cn-DEY"/>
+                                    <constraint firstItem="QjW-Hf-5RE" firstAttribute="leading" secondItem="fnN-HF-Qg1" secondAttribute="leading" constant="8" id="t1X-yh-B9G"/>
                                 </constraints>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请选择" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bb7-br-NVe">
-                                <rect key="frame" x="35" y="31" width="51" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.16470588235294117" green="0.53333333333333333" blue="0.25490196078431371" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="b6z-gX-gFb" secondAttribute="trailing" id="5f5-Mo-g9S"/>
-                            <constraint firstItem="Bb7-br-NVe" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" constant="11" id="9rS-vJ-6bz"/>
-                            <constraint firstItem="8od-e5-dmo" firstAttribute="top" secondItem="b6z-gX-gFb" secondAttribute="bottom" id="Der-AI-Q9T"/>
-                            <constraint firstItem="b6z-gX-gFb" firstAttribute="leading" secondItem="Bb7-br-NVe" secondAttribute="trailing" constant="8" id="HwW-GW-udV"/>
-                            <constraint firstItem="8od-e5-dmo" firstAttribute="top" secondItem="Bb7-br-NVe" secondAttribute="bottom" constant="12" id="Mkd-bp-fZA"/>
+                            <constraint firstItem="fnN-HF-Qg1" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" constant="-20" id="0wu-lF-YZh"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="fnN-HF-Qg1" secondAttribute="trailing" constant="-16" id="29S-YR-OMp"/>
+                            <constraint firstItem="8od-e5-dmo" firstAttribute="top" secondItem="Bb7-br-NVe" secondAttribute="bottom" constant="12" id="AVu-We-HYU"/>
                             <constraint firstItem="4ug-Mw-9AY" firstAttribute="top" secondItem="8od-e5-dmo" secondAttribute="bottom" id="Tjv-gu-PNT"/>
-                            <constraint firstItem="Bb7-br-NVe" firstAttribute="leading" secondItem="QjW-Hf-5RE" secondAttribute="trailing" constant="5" id="VAV-Un-zXv"/>
                             <constraint firstAttribute="trailing" secondItem="8od-e5-dmo" secondAttribute="trailing" id="Vds-bB-MyX"/>
-                            <constraint firstItem="QjW-Hf-5RE" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" constant="8" id="XuD-6d-Vl8"/>
-                            <constraint firstItem="QjW-Hf-5RE" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leadingMargin" constant="-13" id="ZzU-WX-E2D"/>
+                            <constraint firstItem="8od-e5-dmo" firstAttribute="top" secondItem="QjW-Hf-5RE" secondAttribute="bottom" constant="8" id="a16-sZ-aLG"/>
                             <constraint firstItem="8od-e5-dmo" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leading" id="eM0-Of-rfp"/>
-                            <constraint firstItem="b6z-gX-gFb" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" id="rTw-sL-H4h"/>
+                            <constraint firstItem="8od-e5-dmo" firstAttribute="top" secondItem="b6z-gX-gFb" secondAttribute="bottom" id="fos-Zi-3Tq"/>
+                            <constraint firstItem="fnN-HF-Qg1" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leadingMargin" constant="-16" id="kZs-Se-yKS"/>
+                            <constraint firstItem="fnN-HF-Qg1" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" id="u32-2f-GcN"/>
+                            <constraint firstItem="8od-e5-dmo" firstAttribute="top" secondItem="fnN-HF-Qg1" secondAttribute="bottom" id="zVu-mc-2g0"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="PaI-4E-bCC"/>
@@ -555,6 +570,10 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="P7s-Qe-Du0">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.1647058824" green="0.53333333329999999" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -616,6 +635,10 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Ket-GG-htp">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.1647058824" green="0.53333333329999999" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -639,6 +662,10 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="vzN-RH-AZJ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.1647058824" green="0.53333333329999999" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
