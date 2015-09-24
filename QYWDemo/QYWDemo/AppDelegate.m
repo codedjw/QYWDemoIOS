@@ -25,6 +25,15 @@
         
     }
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    
+    // Second
+    UITabBarController *tabViewController = (UITabBarController *) self.window.rootViewController;
+    UITabBar *tabBar = tabViewController.tabBar;
+    [tabBar setTintColor:[UIColor colorWithRed:0.13 green:0.56 blue:0.27 alpha:1.0]];
+    UITabBarItem *tabBarItem2 = [tabBar.items objectAtIndex:1];
+    UIImage* tabBarItem2Image = [UIImage imageNamed:@"mail30x30.png"];
+    UIImage* tabBarItem2SelectedImage = [UIImage imageNamed:@"mail_on30x30.png"];
+    (void)[tabBarItem2 initWithTitle:@"消息中心" image:tabBarItem2Image selectedImage:tabBarItem2SelectedImage];
     return YES;
 }
 

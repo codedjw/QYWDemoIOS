@@ -9,6 +9,7 @@
 #import "EditPatientViewController.h"
 
 @interface EditPatientViewController ()
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
 
@@ -27,6 +28,28 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 5;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSString *editCellID = @"editCellID";
+//    XYBookInfoMainCell *cell = [tableView dequeueReusableCellWithIdentifier:mainCellID];
+//    if (cell == nil) {
+//        // XYSaleItemCell.xib as NibName
+//        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"XYBookInfoMainCell" owner:nil options:nil];
+//        //第一个对象就是BookInfoCellIdentifier了（xib所列子控件中的最高父控件，BookInfoCellIdentifier）
+//        cell = [nib objectAtIndex:0];
+//    }
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:editCellID];
+    if (nil == cell) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:editCellID];
+    }
+    return cell;
 }
 
 /*
