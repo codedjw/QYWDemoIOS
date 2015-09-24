@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>image</key>
+		<string>wodezhangdan</string>
+		<key>label</key>
+		<string>我的账单</string>
+	</dict>
+	<dict>
+		<key>image</key>
+		<string>wodebaogaodan</string>
+		<key>label</key>
+		<string>我的报告单</string>
+	</dict>
+	<dict>
+		<key>image</key>
+		<string>jiaohaochaxun</string>
+		<key>label</key>
+		<string>我的排队</string>
+	</dict>
+	<dict>
+		<key>image</key>
+		<string>jiuyizhinan</string>
+		<key>label</key>
+		<string>就医指南</string>
+	</dict>
+	<dict>
+		<key>image</key>
+		<string>yiyuandaohang</string>
+		<key>label</key>
+		<string>医院导航</string>
+	</dict>
+	<dict>
+		<key>image</key>
+		<string>mianguahaofei</string>
+		<key>label</key>
+		<string>优惠活动</string>
+	</dict>
+	<dict>
+		<key>image</key>
+		<string>yishengpaiban</string>
+		<key>label</key>
+		<string>医生排班</string>
+	</dict>
+	<dict>
+		<key>image</key>
+		<string>manyidu</string>
+		<key>label</key>
+		<string>满意度</string>
+	</dict>
+	<dict>
+		<key>image</key>
+		<string>wodetuifei</string>
+		<key>label</key>
+		<string>我的退费</string>
+	</dict>
+</array>
+</plist>
