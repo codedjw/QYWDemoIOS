@@ -9,7 +9,11 @@
 #import "EditPatientViewController.h"
 
 @interface EditPatientViewController ()
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *segCtrl;
+@property (weak, nonatomic) IBOutlet UIView *containerView;
+
+@property (nonatomic, strong) NSArray *viewControllerIDs;
+@property (nonatomic, weak) UIViewController *currentSubViewController;
 
 @end
 
@@ -18,6 +22,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.viewControllerIDs = @[@"PatientInfoTableID", @"PatientListTableID"];
+    [self segmentedControlChanged:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -30,26 +36,26 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+- (IBAction)segmentedControlChanged:(id)sender
 {
-    return 5;
+    NSInteger idx = self.segCtrl.selectedSegmentIndex;
+    if (idx < self.viewControllerIDs.count) {
+        [self showChildTableViewControllerWithIdentifier:self.viewControllerIDs[idx]];
+    }
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)showChildTableViewControllerWithIdentifier:(NSString *)identifier
 {
-    NSString *editCellID = @"editCellID";
-//    XYBookInfoMainCell *cell = [tableView dequeueReusableCellWithIdentifier:mainCellID];
-//    if (cell == nil) {
-//        // XYSaleItemCell.xib as NibName
-//        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"XYBookInfoMainCell" owner:nil options:nil];
-//        //第一个对象就是BookInfoCellIdentifier了（xib所列子控件中的最高父控件，BookInfoCellIdentifier）
-//        cell = [nib objectAtIndex:0];
-//    }
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:editCellID];
-    if (nil == cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:editCellID];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UIViewController* ctrl = [storyboard instantiateViewControllerWithIdentifier:identifier];
+    if (ctrl) {
+        [self.currentSubViewController removeFromParentViewController];
+        [self.currentSubViewController.view removeFromSuperview];
+        self.currentSubViewController = ctrl;
+        [self addChildViewController:ctrl];
+        [self.containerView addSubview:ctrl.view];
+        ctrl.view.frame = self.containerView.bounds;
     }
-    return cell;
 }
 
 /*

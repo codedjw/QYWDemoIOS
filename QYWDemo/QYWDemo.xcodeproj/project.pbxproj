@@ -11,6 +11,8 @@
 		CC065A1D1BB3EC7B00BBBAF3 /* EditPatientViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC065A1C1BB3EC7B00BBBAF3 /* EditPatientViewController.m */; };
 		CC065A241BB4265B00BBBAF3 /* HelperClass.m in Sources */ = {isa = PBXBuildFile; fileRef = CC065A231BB4265B00BBBAF3 /* HelperClass.m */; };
 		CC3300691BB4792E00456ED6 /* MeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC3300681BB4792E00456ED6 /* MeTableViewController.m */; };
+		CC7899151BB530F5000BE46E /* PatientListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC7899141BB530F5000BE46E /* PatientListTableViewController.m */; };
+		CC7899181BB5312E000BE46E /* PatientInfoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC7899171BB5312E000BE46E /* PatientInfoTableViewController.m */; };
 		DD0632701BB2739700686572 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DD06326F1BB2739700686572 /* main.m */; };
 		DD0632731BB2739700686572 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0632721BB2739700686572 /* AppDelegate.m */; };
 		DD06327E1BB2739700686572 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DD06327D1BB2739700686572 /* Images.xcassets */; };
@@ -39,6 +41,10 @@
 		CC065A231BB4265B00BBBAF3 /* HelperClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelperClass.m; sourceTree = "<group>"; };
 		CC3300671BB4792E00456ED6 /* MeTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MeTableViewController.h; path = Views/MeTableViewController.h; sourceTree = "<group>"; };
 		CC3300681BB4792E00456ED6 /* MeTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MeTableViewController.m; path = Views/MeTableViewController.m; sourceTree = "<group>"; };
+		CC7899131BB530F5000BE46E /* PatientListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PatientListTableViewController.h; path = Views/PatientListTableViewController.h; sourceTree = "<group>"; };
+		CC7899141BB530F5000BE46E /* PatientListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PatientListTableViewController.m; path = Views/PatientListTableViewController.m; sourceTree = "<group>"; };
+		CC7899161BB5312E000BE46E /* PatientInfoTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PatientInfoTableViewController.h; path = Views/PatientInfoTableViewController.h; sourceTree = "<group>"; };
+		CC7899171BB5312E000BE46E /* PatientInfoTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PatientInfoTableViewController.m; path = Views/PatientInfoTableViewController.m; sourceTree = "<group>"; };
 		DD06326A1BB2739700686572 /* QYWDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QYWDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD06326E1BB2739700686572 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DD06326F1BB2739700686572 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -94,6 +100,10 @@
 				DDB4CF1F1BB2847900E9FAD3 /* HomeViewController.m */,
 				DDB4CF211BB2B4FD00E9FAD3 /* HomeTableViewController.h */,
 				DDB4CF221BB2B4FD00E9FAD3 /* HomeTableViewController.m */,
+				CC7899131BB530F5000BE46E /* PatientListTableViewController.h */,
+				CC7899141BB530F5000BE46E /* PatientListTableViewController.m */,
+				CC7899161BB5312E000BE46E /* PatientInfoTableViewController.h */,
+				CC7899171BB5312E000BE46E /* PatientInfoTableViewController.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -266,6 +276,8 @@
 				CC065A241BB4265B00BBBAF3 /* HelperClass.m in Sources */,
 				CC3300691BB4792E00456ED6 /* MeTableViewController.m in Sources */,
 				DDB4CF201BB2847900E9FAD3 /* HomeViewController.m in Sources */,
+				CC7899181BB5312E000BE46E /* PatientInfoTableViewController.m in Sources */,
+				CC7899151BB530F5000BE46E /* PatientListTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
