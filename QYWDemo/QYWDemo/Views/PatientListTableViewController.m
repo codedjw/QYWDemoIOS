@@ -9,14 +9,14 @@
 #import "PatientListTableViewController.h"
 
 @interface PatientListTableViewController ()
-
+@property NSInteger selectedPID;
 @end
 
 @implementation PatientListTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    self.selectedPID = 0;
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -31,7 +31,12 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    UITableViewCell *preCell = [tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:self.selectedPID inSection:indexPath.section]];
+    [preCell setAccessoryType:UITableViewCellAccessoryNone];
     
+    UITableViewCell *curCell = [tableView cellForRowAtIndexPath:indexPath];
+    [curCell setAccessoryType:UITableViewCellAccessoryCheckmark];
+    self.selectedPID = indexPath.row;
 }
 
 //#pragma mark - Table view data source

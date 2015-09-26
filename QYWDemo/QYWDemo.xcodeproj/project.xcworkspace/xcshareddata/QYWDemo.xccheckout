@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>3AE080A0-2974-44F4-96CD-982321833077</string>
 	<key>IDESourceControlProjectName</key>
-	<string>QYWDemo</string>
+	<string>project</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>1EA3EFEF28E4EEE096E2295A5081E8D3D3308ED5</key>
 		<string>https://github.com/codedjw/QYWDemoIOS.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>QYWDemo/QYWDemo.xcodeproj</string>
+	<string>QYWDemo/QYWDemo.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>1EA3EFEF28E4EEE096E2295A5081E8D3D3308ED5</key>
