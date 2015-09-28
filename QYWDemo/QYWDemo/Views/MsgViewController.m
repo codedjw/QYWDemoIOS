@@ -35,7 +35,10 @@ static NSString* const kMsgTableCell = @"MsgTableCell";
 @property(nonatomic, strong)NSMutableArray* originalResults;
 
 enum msgStatus {
-    NOTREAD, HASREAD
+    NONE = 0,
+    NOTREAD = 1 << 0,
+    HASREAD = 1 << 1,
+    SEARCH = 1 << 2
 };
 
 @property enum msgStatus status;
@@ -68,18 +71,15 @@ enum msgStatus {
 }
 - (IBAction)segmentedControlChanged:(id)sender {
     NSInteger idx = self.segCtrl.selectedSegmentIndex;
-    self.status = (enum msgStatus) idx;
-    switch (self.status) {
-        case NOTREAD:
-            self.originalResults = self.notReadMsgs;
-            break;
-        case HASREAD:
-            self.originalResults = self.hasReadMsgs;
-            break;
-        default:
-            break;
+    enum msgStatus segVal = (enum msgStatus) (idx+1);
+    self.status = (self.status & SEARCH ) | segVal;
+    if (self.status & NOTREAD) {
+         self.originalResults = self.notReadMsgs;
     }
-    NSLog(@"%i", self.status);
+    if (self.status & HASREAD) {
+        self.originalResults = self.hasReadMsgs;
+    }
+    NSLog(@"segmentedControlChanged %i", self.status);
     [self.tableView reloadData];
 }
 
@@ -95,7 +95,7 @@ enum msgStatus {
             return NO;
         }];
         self.searchResults = [[self.originalResults objectsAtIndexes:indexes] mutableCopy];
-        NSLog(@"%@", self.searchResults);
+//        NSLog(@"%@", self.searchResults);
         return (nil == self.searchResults) ? 0 : [self.searchResults count];
     } else {
         return (nil == self.originalResults) ? 0 : [self.originalResults count];
@@ -131,10 +131,12 @@ enum msgStatus {
 /*改变删除按钮的title*/
 -(NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (self.status == NOTREAD) {
+    if (self.status & NOTREAD) {
         return @"已读";
-    } else {
+    } if (self.status & HASREAD) {
         return @"未读";
+    } else {
+        return @"";
     }
 }
 
@@ -151,32 +153,47 @@ enum msgStatus {
 /*删除用到的函数*/
 -(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSMutableArray *tmp, *tmp2 = nil;
-    switch (self.status) {
-        case NOTREAD: {
+    NSMutableArray *tmp, *tmp2, *tmp3= nil;
+    if (self.status & NOTREAD) {
+        if (self.status & SEARCH) {
+            tmp = self.searchResults;
+            tmp2 = self.hasReadMsgs;
+            tmp3 = self.notReadMsgs;
+        } else {
             tmp = self.notReadMsgs;
             tmp2 = self.hasReadMsgs;
-            UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-            NSInteger tag = cell.tag;
-            [self deleteOneNotReadMsg:tag];
-            break;
         }
-        case HASREAD: {
+        UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+        NSInteger tag = cell.tag;
+        [self deleteOneNotReadMsg:tag];
+    }
+    if (self.status & HASREAD) {
+        if (self.status & SEARCH) {
+            tmp = self.searchResults;
+            tmp2 = self.notReadMsgs;
+            tmp3 = self.hasReadMsgs;
+        } else {
             tmp = self.hasReadMsgs;
             tmp2 = self.notReadMsgs;
-            UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-            NSInteger tag = cell.tag;
-            [self deleteOneHasReadMsg:tag];
-            break;
         }
-        default:
-            break;
+        UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+        NSInteger tag = cell.tag;
+        [self deleteOneNotReadMsg:tag];
     }
     if (tmp) {
         if (editingStyle == UITableViewCellEditingStyleDelete)  {
             [tmp2 addObject:[tmp objectAtIndex:indexPath.row]]; // 添加到另一个数组中
+            // need check
+            if (tmp3) {
+                [tmp3 removeObject:[tmp objectAtIndex:indexPath.row]];
+            }
             [tmp removeObjectAtIndex:indexPath.row];  //删除数组里的数据
-            [self.tableView deleteRowsAtIndexPaths:[NSMutableArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];  //删除对应数据的cell
+            if (tableView == self.tableView) {
+                [self.tableView deleteRowsAtIndexPaths:[NSMutableArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];  //删除对应数据的cell
+            } else {
+                ///// search bar ///// -- cannot use the above function
+                [tableView reloadData];
+            }
         }
     }
 }
@@ -196,6 +213,9 @@ enum msgStatus {
 }
 - (void)searchDisplayController:(UISearchDisplayController *)controller willHideSearchResultsTableView:(UITableView *)tableView {
     NSLog(@"🔦 | will hide table");
+    self.status = self.status & (~ SEARCH);
+    NSLog(@"willHideSearchResultsTableView: %i", self.status);
+    [self.tableView reloadData];
 }
 - (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString {
     NSLog(@"🔦 | should reload table for search string?");
@@ -216,11 +236,8 @@ enum msgStatus {
 
 - (void)searchDisplayControllerWillBeginSearch:(UISearchDisplayController *)controller
 {
-    NSLog(@"searchDisplayControllerWillBeginSearch");
-//    [self.searchDisplayController.searchBar setBackgroundColor:[UIColor colorWithRed:0.13 green:0.56 blue:0.27 alpha:1.0]];
-//    NSLog(@"SDVC:%@", NSStringFromCGRect(self.searchDisplayController.searchResultsTableView.frame));
-//    NSLog(@"Table:%@", NSStringFromCGRect(self.tableView.frame));
-//    [self.searchDisplayController.searchBar setTranslucent:NO];
+    self.status = self.status | SEARCH;
+    NSLog(@"searchDisplayControllerWillBeginSearch: %i", self.status);
 }
 
 - (void)searchDisplayControllerDidEndSearch:(UISearchDisplayController *)controller
