@@ -15,6 +15,8 @@
 		CC582B5F1BB7F97D00CA3BB1 /* RecordsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC582B5E1BB7F97D00CA3BB1 /* RecordsViewController.m */; };
 		CC582B621BB7FE3D00CA3BB1 /* AddNewPatientTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC582B611BB7FE3D00CA3BB1 /* AddNewPatientTableViewController.m */; };
 		CC582B651BB80A3300CA3BB1 /* MsgViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC582B641BB80A3300CA3BB1 /* MsgViewController.m */; };
+		CC582B691BB856B200CA3BB1 /* SearchResultTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CC582B671BB856B200CA3BB1 /* SearchResultTableViewCell.m */; };
+		CC582B6A1BB856B200CA3BB1 /* SearchResultTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC582B681BB856B200CA3BB1 /* SearchResultTableViewCell.xib */; };
 		CC7899151BB530F5000BE46E /* PatientListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC7899141BB530F5000BE46E /* PatientListTableViewController.m */; };
 		CC7899181BB5312E000BE46E /* PatientInfoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC7899171BB5312E000BE46E /* PatientInfoTableViewController.m */; };
 		DD0632701BB2739700686572 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DD06326F1BB2739700686572 /* main.m */; };
@@ -53,6 +55,9 @@
 		CC582B611BB7FE3D00CA3BB1 /* AddNewPatientTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddNewPatientTableViewController.m; path = Views/AddNewPatientTableViewController.m; sourceTree = "<group>"; };
 		CC582B631BB80A3300CA3BB1 /* MsgViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MsgViewController.h; path = Views/MsgViewController.h; sourceTree = "<group>"; };
 		CC582B641BB80A3300CA3BB1 /* MsgViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MsgViewController.m; path = Views/MsgViewController.m; sourceTree = "<group>"; };
+		CC582B661BB856B200CA3BB1 /* SearchResultTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchResultTableViewCell.h; sourceTree = "<group>"; };
+		CC582B671BB856B200CA3BB1 /* SearchResultTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchResultTableViewCell.m; sourceTree = "<group>"; };
+		CC582B681BB856B200CA3BB1 /* SearchResultTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchResultTableViewCell.xib; sourceTree = "<group>"; };
 		CC7899131BB530F5000BE46E /* PatientListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PatientListTableViewController.h; path = Views/PatientListTableViewController.h; sourceTree = "<group>"; };
 		CC7899141BB530F5000BE46E /* PatientListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PatientListTableViewController.m; path = Views/PatientListTableViewController.m; sourceTree = "<group>"; };
 		CC7899161BB5312E000BE46E /* PatientInfoTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PatientInfoTableViewController.h; path = Views/PatientInfoTableViewController.h; sourceTree = "<group>"; };
@@ -124,6 +129,9 @@
 				CC582B611BB7FE3D00CA3BB1 /* AddNewPatientTableViewController.m */,
 				CC582B631BB80A3300CA3BB1 /* MsgViewController.h */,
 				CC582B641BB80A3300CA3BB1 /* MsgViewController.m */,
+				CC582B661BB856B200CA3BB1 /* SearchResultTableViewCell.h */,
+				CC582B671BB856B200CA3BB1 /* SearchResultTableViewCell.m */,
+				CC582B681BB856B200CA3BB1 /* SearchResultTableViewCell.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -269,6 +277,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CC065A171BB3E6C400BBBAF3 /* Main.storyboard in Resources */,
+				CC582B6A1BB856B200CA3BB1 /* SearchResultTableViewCell.xib in Resources */,
 				DDB4CF251BB2B90800E9FAD3 /* HomeItems.plist in Resources */,
 				DD0632811BB2739700686572 /* LaunchScreen.xib in Resources */,
 				DD06327E1BB2739700686572 /* Images.xcassets in Resources */,
@@ -295,6 +304,7 @@
 				CC065A1D1BB3EC7B00BBBAF3 /* EditPatientViewController.m in Sources */,
 				DD0632701BB2739700686572 /* main.m in Sources */,
 				CC065A241BB4265B00BBBAF3 /* HelperClass.m in Sources */,
+				CC582B691BB856B200CA3BB1 /* SearchResultTableViewCell.m in Sources */,
 				CC582B5F1BB7F97D00CA3BB1 /* RecordsViewController.m in Sources */,
 				CC582B651BB80A3300CA3BB1 /* MsgViewController.m in Sources */,
 				CC3300691BB4792E00456ED6 /* MeTableViewController.m in Sources */,
