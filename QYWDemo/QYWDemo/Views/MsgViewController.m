@@ -215,6 +215,7 @@ enum msgStatus {
     NSLog(@"🔦 | will hide table");
     self.status = self.status & (~ SEARCH);
     NSLog(@"willHideSearchResultsTableView: %i", self.status);
+     [self.tabBarController.tabBar setHidden:NO];
     [self.tableView reloadData];
 }
 - (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString {
@@ -254,6 +255,7 @@ enum msgStatus {
     [controller.searchResultsTableView.superview bringSubviewToFront:controller.searchResultsTableView];
     [controller.searchResultsTableView reloadData];
     controller.searchResultsTableView.hidden = NO;
+    [self.tabBarController.tabBar setHidden:YES];
 }
 
 /*

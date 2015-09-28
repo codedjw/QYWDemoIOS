@@ -738,7 +738,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8d4-an-EqJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2904" y="-2003"/>
+            <point key="canvasLocation" x="3436" y="-2003"/>
         </scene>
         <!--Patient Info Table View Controller-->
         <scene sceneID="0Bs-Xh-Qee">
@@ -975,7 +975,61 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5dl-aF-mJe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2432" y="-2003"/>
+            <point key="canvasLocation" x="2964" y="-2003"/>
+        </scene>
+        <!--选择城市-->
+        <scene sceneID="4r9-jX-yXH">
+            <objects>
+                <viewController id="QIb-6g-FZg" customClass="SearchProvinceViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="EF9-0Z-vtL"/>
+                        <viewControllerLayoutGuide type="bottom" id="OOm-j3-q8a"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="iV5-h9-Z0K">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yhq-Fu-om2">
+                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                                <state key="normal" backgroundImage="searchProvince">
+                                    <color key="titleShadowColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="selectAction:" destination="QIb-6g-FZg" eventType="touchUpInside" id="MFu-9Q-MXz"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="yhq-Fu-om2" firstAttribute="leading" secondItem="iV5-h9-Z0K" secondAttribute="leading" id="LAQ-P4-2Cc"/>
+                            <constraint firstAttribute="trailing" secondItem="yhq-Fu-om2" secondAttribute="trailing" id="PIZ-Ev-4YX"/>
+                            <constraint firstItem="yhq-Fu-om2" firstAttribute="bottom" secondItem="OOm-j3-q8a" secondAttribute="top" id="c6u-po-FEo"/>
+                            <constraint firstItem="yhq-Fu-om2" firstAttribute="top" secondItem="EF9-0Z-vtL" secondAttribute="bottom" id="dYt-MU-DY2"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="选择城市" id="xnL-F8-HT6">
+                        <barButtonItem key="leftBarButtonItem" systemItem="stop" id="vUL-kL-YXj">
+                            <connections>
+                                <action selector="backAction:" destination="QIb-6g-FZg" id="r93-4U-E0n"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="searchDisplayController" destination="5gb-tz-Ows" id="Q0Y-ac-dni"/>
+                        <outlet property="selectButton" destination="yhq-Fu-om2" id="hAH-SK-tDH"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="F4S-Y0-ufa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="5gb-tz-Ows">
+                    <connections>
+                        <outlet property="delegate" destination="QIb-6g-FZg" id="109-yv-z6A"/>
+                        <outlet property="searchContentsController" destination="QIb-6g-FZg" id="Gfw-W4-BO7"/>
+                        <outlet property="searchResultsDataSource" destination="QIb-6g-FZg" id="hHJ-W8-hHK"/>
+                        <outlet property="searchResultsDelegate" destination="QIb-6g-FZg" id="xdm-Zo-dNy"/>
+                    </connections>
+                </searchDisplayController>
+            </objects>
+            <point key="canvasLocation" x="2049" y="-1993"/>
         </scene>
         <!--Home View Controller-->
         <scene sceneID="hNz-n2-bh7">
@@ -1007,28 +1061,28 @@
                                             <constraint firstAttribute="width" constant="27" id="McU-CC-Czz"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请选择" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bb7-br-NVe">
-                                        <rect key="frame" x="38" y="31" width="51" height="21"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="21" id="ri3-cg-z6D"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dNg-fN-cby">
+                                        <rect key="frame" x="43" y="27" width="45" height="30"/>
+                                        <state key="normal" title="请选择">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="GdB-0x-JAj" kind="modal" id="SAv-aD-LxQ"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.1647058824" green="0.53333333329999999" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="QjW-Hf-5RE" firstAttribute="bottom" secondItem="fnN-HF-Qg1" secondAttribute="bottomMargin" id="0DZ-jR-fJq"/>
-                                    <constraint firstItem="Bb7-br-NVe" firstAttribute="centerY" secondItem="QjW-Hf-5RE" secondAttribute="centerY" constant="-0.5" id="2Ir-b6-ctF"/>
                                     <constraint firstAttribute="trailing" secondItem="b6z-gX-gFb" secondAttribute="trailing" id="9sL-TG-got"/>
                                     <constraint firstItem="QjW-Hf-5RE" firstAttribute="leading" secondItem="fnN-HF-Qg1" secondAttribute="leadingMargin" id="OIq-hr-myn"/>
-                                    <constraint firstItem="b6z-gX-gFb" firstAttribute="centerY" secondItem="Bb7-br-NVe" secondAttribute="centerY" constant="0.5" id="TZ8-DW-wml"/>
-                                    <constraint firstItem="b6z-gX-gFb" firstAttribute="leading" secondItem="Bb7-br-NVe" secondAttribute="trailing" constant="5" id="ZBH-cn-DEY"/>
-                                    <constraint firstItem="Bb7-br-NVe" firstAttribute="leading" secondItem="QjW-Hf-5RE" secondAttribute="trailing" constant="3" id="emI-OT-dac"/>
+                                    <constraint firstItem="dNg-fN-cby" firstAttribute="centerY" secondItem="QjW-Hf-5RE" secondAttribute="centerY" id="fHQ-jd-deC"/>
                                     <constraint firstAttribute="height" constant="64" id="fJc-Rp-bit"/>
+                                    <constraint firstItem="dNg-fN-cby" firstAttribute="centerY" secondItem="b6z-gX-gFb" secondAttribute="centerY" id="gYJ-TK-6lX"/>
                                     <constraint firstItem="QjW-Hf-5RE" firstAttribute="top" secondItem="fnN-HF-Qg1" secondAttribute="top" constant="28" id="gxB-Pv-KqK"/>
+                                    <constraint firstItem="dNg-fN-cby" firstAttribute="leading" secondItem="QjW-Hf-5RE" secondAttribute="trailing" constant="8" symbolic="YES" id="kf5-wP-olb"/>
+                                    <constraint firstItem="b6z-gX-gFb" firstAttribute="leading" secondItem="dNg-fN-cby" secondAttribute="trailing" constant="6" id="oNg-et-dDi"/>
                                 </constraints>
                             </view>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8od-e5-dmo">
@@ -2291,12 +2345,36 @@
             </objects>
             <point key="canvasLocation" x="996" y="-596"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="519-c6-Gpd">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="GdB-0x-JAj" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="1y6-3G-evj">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" red="0.1647058824" green="0.53333333329999999" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="0.1647058824" green="0.53333333329999999" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="QIb-6g-FZg" kind="relationship" relationship="rootViewController" id="mH3-Pr-XBH"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yYc-p7-aRs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1517" y="-1993"/>
+        </scene>
     </scenes>
     <resources>
         <image name="background" width="400" height="180"/>
         <image name="dangriguahao" width="75" height="75"/>
         <image name="home" width="30" height="28"/>
-        <image name="hospital_small" width="13" height="14"/>
+        <image name="hospital_small" width="30" height="31"/>
         <image name="info" width="32" height="32"/>
         <image name="jiaohaochaxun" width="75" height="75"/>
         <image name="jiuzhenzhe" width="30" height="28"/>
@@ -2304,6 +2382,7 @@
         <image name="manyidu" width="75" height="75"/>
         <image name="myquyi" width="30" height="28"/>
         <image name="navigation" width="22" height="29"/>
+        <image name="searchProvince" width="562" height="903"/>
         <image name="star" width="22" height="22"/>
         <image name="unloginface" width="60" height="60"/>
         <image name="wodebaogaodan" width="75" height="75"/>
