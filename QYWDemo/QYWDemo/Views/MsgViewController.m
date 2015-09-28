@@ -29,10 +29,10 @@ static NSString* const kMsgTableCell = @"MsgTableCell";
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
-@property(nonatomic, strong)NSArray* searchResults;
-@property(nonatomic, strong)NSArray* notReadMsgs;
-@property(nonatomic, strong)NSArray* hasReadMsgs;
-@property(nonatomic, strong)NSArray* originalResults;
+@property(nonatomic, strong)NSMutableArray* searchResults;
+@property(nonatomic, strong)NSMutableArray* notReadMsgs;
+@property(nonatomic, strong)NSMutableArray* hasReadMsgs;
+@property(nonatomic, strong)NSMutableArray* originalResults;
 
 enum msgStatus {
     NOTREAD, HASREAD
@@ -53,8 +53,11 @@ enum msgStatus {
     [searchField setTextColor:[UIColor blackColor]];
     [self segmentedControlChanged:nil];
     [HelperClass setExtraCellLineHidden:self.tableView];
-    self.notReadMsgs = @[@{@"title": @"预约挂号提醒", @"detail": @"2015/09/30 临床营养科 XX 预约成功", @"timestamp": @"2015/09/24"},@{@"title": @"预约挂号提醒", @"detail": @"2015/09/30 临床营养科 XX 预约成功", @"timestamp": @"2015/09/24"},@{@"title": @"预约挂号提醒", @"detail": @"2015/09/30 临床营养科 XX 预约成功", @"timestamp": @"2015/09/24"}];
-    self.hasReadMsgs = @[@{@"title": @"查卡结果", @"detail": @"中国人民解放军第四五五医院 查卡失败", @"timestamp": @"2015/09/23"}];
+    [HelperClass setExtraCellLineHidden:self.searchDisplayController.searchResultsTableView];
+    self.notReadMsgs = [[NSMutableArray alloc] initWithArray:@[@{@"title": @"预约挂号提醒", @"detail": @"2015/09/30 临床营养科 XX 预约成功", @"timestamp": @"2015/09/24"},@{@"title": @"预约挂号提醒", @"detail": @"2015/09/10 内科 XXX 预约成功", @"timestamp": @"2015/09/09"},@{@"title": @"预约挂号提醒", @"detail": @"2015/08/30 骨科 XXXX 预约成功", @"timestamp": @"2014/08/24"}]];
+    self.hasReadMsgs = [[NSMutableArray alloc] initWithArray:@[@{@"title": @"查卡结果", @"detail": @"中国人民解放军第四五五医院 查卡失败", @"timestamp": @"2015/09/10"}, @{@"title": @"查卡结果", @"detail": @"江苏省南京市第一医院 查卡失败", @"timestamp": @"2015/08/23"}, @{@"title": @"查卡结果", @"detail": @"上海市闵行区中心医院 查卡失败", @"timestamp": @"2015/08/15"}, @{@"title": @"查卡结果", @"detail": @"江苏省南京市鼓楼医院 查卡失败", @"timestamp": @"2014/07/30"}]];
+    self.originalResults = [[NSMutableArray alloc] init];
+    self.searchResults = [[NSMutableArray alloc] init];
     self.status = NOTREAD;
     self.originalResults = self.notReadMsgs;
 }
@@ -82,7 +85,21 @@ enum msgStatus {
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return (nil == self.originalResults) ? 0 : [self.originalResults count];
+    if (tableView != self.tableView) {
+        NSString *filterStr = self.searchDisplayController.searchBar.text;
+        NSLog(@"predicate");
+        NSIndexSet *indexes = [self.originalResults indexesOfObjectsPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
+            if (([obj[@"title"] rangeOfString:filterStr].location != NSNotFound) || ([obj[@"detail"] rangeOfString:filterStr].location != NSNotFound) || ([obj[@"timestamp"] rangeOfString:filterStr].location != NSNotFound)) {
+                return YES;
+            }
+            return NO;
+        }];
+        self.searchResults = [[self.originalResults objectsAtIndexes:indexes] mutableCopy];
+        NSLog(@"%@", self.searchResults);
+        return (nil == self.searchResults) ? 0 : [self.searchResults count];
+    } else {
+        return (nil == self.originalResults) ? 0 : [self.originalResults count];
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -90,15 +107,78 @@ enum msgStatus {
 //    NSLog(@"%@", self.originalResults);
     MsgTableCell *cell = (MsgTableCell *)[self.tableView dequeueReusableCellWithIdentifier:kMsgTableCell forIndexPath:indexPath];
     NSInteger idx = indexPath.row;
-    cell.titleLabel.text = (self.originalResults[idx])[@"title"];
-    cell.detailLabel.text = (self.originalResults[idx])[@"detail"];
-    cell.timestampLabel.text = (self.originalResults[idx])[@"timestamp"];
+    NSArray *array = self.originalResults;
+    if (tableView != self.tableView) {
+        array = self.searchResults;
+    }
+    cell.titleLabel.text = (array[idx])[@"title"];
+    cell.detailLabel.text = (array[idx])[@"detail"];
+    cell.timestampLabel.text = (array[idx])[@"timestamp"];
+    cell.tag = indexPath.row;
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 60.0f;
+}
+
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return UITableViewCellEditingStyleDelete;
+}
+
+/*改变删除按钮的title*/
+-(NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (self.status == NOTREAD) {
+        return @"已读";
+    } else {
+        return @"未读";
+    }
+}
+
+- (void)deleteOneNotReadMsg:(NSInteger)tag
+{
+    
+}
+
+- (void)deleteOneHasReadMsg:(NSInteger)tag
+{
+    
+}
+
+/*删除用到的函数*/
+-(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSMutableArray *tmp, *tmp2 = nil;
+    switch (self.status) {
+        case NOTREAD: {
+            tmp = self.notReadMsgs;
+            tmp2 = self.hasReadMsgs;
+            UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+            NSInteger tag = cell.tag;
+            [self deleteOneNotReadMsg:tag];
+            break;
+        }
+        case HASREAD: {
+            tmp = self.hasReadMsgs;
+            tmp2 = self.notReadMsgs;
+            UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+            NSInteger tag = cell.tag;
+            [self deleteOneHasReadMsg:tag];
+            break;
+        }
+        default:
+            break;
+    }
+    if (tmp) {
+        if (editingStyle == UITableViewCellEditingStyleDelete)  {
+            [tmp2 addObject:[tmp objectAtIndex:indexPath.row]]; // 添加到另一个数组中
+            [tmp removeObjectAtIndex:indexPath.row];  //删除数组里的数据
+            [self.tableView deleteRowsAtIndexPaths:[NSMutableArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];  //删除对应数据的cell
+        }
+    }
 }
 
 #pragma mark -
@@ -138,9 +218,9 @@ enum msgStatus {
 {
     NSLog(@"searchDisplayControllerWillBeginSearch");
 //    [self.searchDisplayController.searchBar setBackgroundColor:[UIColor colorWithRed:0.13 green:0.56 blue:0.27 alpha:1.0]];
-    NSLog(@"SDVC:%@", NSStringFromCGRect(self.searchDisplayController.searchResultsTableView.frame));
-    NSLog(@"Table:%@", NSStringFromCGRect(self.tableView.frame));
-    [self.searchDisplayController.searchBar setTranslucent:NO];
+//    NSLog(@"SDVC:%@", NSStringFromCGRect(self.searchDisplayController.searchResultsTableView.frame));
+//    NSLog(@"Table:%@", NSStringFromCGRect(self.tableView.frame));
+//    [self.searchDisplayController.searchBar setTranslucent:NO];
 }
 
 - (void)searchDisplayControllerDidEndSearch:(UISearchDisplayController *)controller
@@ -151,9 +231,9 @@ enum msgStatus {
 
 - (void)searchDisplayControllerDidBeginSearch:(UISearchDisplayController *)controller
 {
-    NSLog(@"here");
-    NSLog(@"SDVC:%@", NSStringFromCGRect(self.searchDisplayController.searchResultsTableView.frame));
-    NSLog(@"Table:%@", NSStringFromCGRect(self.tableView.frame));
+//    NSLog(@"here");
+//    NSLog(@"SDVC:%@", NSStringFromCGRect(self.searchDisplayController.searchResultsTableView.frame));
+//    NSLog(@"Table:%@", NSStringFromCGRect(self.tableView.frame));
     [controller.searchResultsTableView.superview bringSubviewToFront:controller.searchResultsTableView];
     [controller.searchResultsTableView reloadData];
     controller.searchResultsTableView.hidden = NO;
