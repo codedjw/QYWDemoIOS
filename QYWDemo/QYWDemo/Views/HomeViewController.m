@@ -22,7 +22,7 @@ static NSString* const kSearchResultTableViewCellId = @"SearchResultTableViewCel
     
     UITextField *searchField = [self.searchDisplayController.searchBar valueForKey:@"_searchField"];
     searchField.textColor = [UIColor whiteColor];
-    [searchField setValue:[UIColor lightGrayColor] forKeyPath:@"_placeholderLabel.textColor"];
+    [searchField setValue:[UIColor whiteColor] forKeyPath:@"_placeholderLabel.textColor"];
 }
 
 - (void)viewWillAppear:(BOOL)animated

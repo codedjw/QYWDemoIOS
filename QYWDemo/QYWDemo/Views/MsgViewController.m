@@ -48,9 +48,9 @@ enum msgStatus {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     UITextField *searchField = [self.searchDisplayController.searchBar valueForKey:@"_searchField"];
-    [searchField setBackgroundColor:[UIColor colorWithRed:0.89 green:0.89 blue:0.90 alpha:1.0f]];
+//    [searchField setBackgroundColor:[UIColor colorWithRed:0.89 green:0.89 blue:0.90 alpha:1.0f]];
+//    [self.searchDisplayController.searchBar setBarTintColor:[UIColor whiteColor]];
     [searchField setTextColor:[UIColor blackColor]];
-    [self.searchDisplayController.searchBar setTranslucent:NO];
     [self segmentedControlChanged:nil];
     [HelperClass setExtraCellLineHidden:self.tableView];
     self.notReadMsgs = @[@{@"title": @"预约挂号提醒", @"detail": @"2015/09/30 临床营养科 XX 预约成功", @"timestamp": @"2015/09/24"},@{@"title": @"预约挂号提醒", @"detail": @"2015/09/30 临床营养科 XX 预约成功", @"timestamp": @"2015/09/24"},@{@"title": @"预约挂号提醒", @"detail": @"2015/09/30 临床营养科 XX 预约成功", @"timestamp": @"2015/09/24"}];
@@ -87,7 +87,7 @@ enum msgStatus {
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"%@", self.originalResults);
+//    NSLog(@"%@", self.originalResults);
     MsgTableCell *cell = (MsgTableCell *)[self.tableView dequeueReusableCellWithIdentifier:kMsgTableCell forIndexPath:indexPath];
     NSInteger idx = indexPath.row;
     cell.titleLabel.text = (self.originalResults[idx])[@"title"];
@@ -120,8 +120,8 @@ enum msgStatus {
 - (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString {
     NSLog(@"🔦 | should reload table for search string?");
     
-        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.title CONTAINS[cd] %@", searchString];
-        self.searchResults = [self.originalResults filteredArrayUsingPredicate:predicate];
+//        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF CONTAINS[cd] %@", searchString];
+//        self.searchResults = [self.originalResults filteredArrayUsingPredicate:predicate];
     
     return YES;
 }
@@ -136,22 +136,24 @@ enum msgStatus {
 
 - (void)searchDisplayControllerWillBeginSearch:(UISearchDisplayController *)controller
 {
-    [self.segCtrl setHidden:YES];
-    [self.tableView setHidden:YES];
-    [self.searchDisplayController.searchBar setBarTintColor:[UIColor colorWithRed:0.13 green:0.56 blue:0.27 alpha:1.0]];
+    NSLog(@"searchDisplayControllerWillBeginSearch");
+//    [self.searchDisplayController.searchBar setBackgroundColor:[UIColor colorWithRed:0.13 green:0.56 blue:0.27 alpha:1.0]];
+    NSLog(@"SDVC:%@", NSStringFromCGRect(self.searchDisplayController.searchResultsTableView.frame));
+    NSLog(@"Table:%@", NSStringFromCGRect(self.tableView.frame));
     [self.searchDisplayController.searchBar setTranslucent:NO];
 }
 
 - (void)searchDisplayControllerDidEndSearch:(UISearchDisplayController *)controller
 {
-    [self.segCtrl setHidden:NO];
-    [self.tableView setHidden:NO];
-    [self.searchDisplayController.searchBar setBarTintColor:[UIColor whiteColor]];
+//    [self.searchDisplayController.searchBar setBarTintColor:[UIColor whiteColor]];
     [self.searchDisplayController.searchBar setTranslucent:NO];
 }
 
 - (void)searchDisplayControllerDidBeginSearch:(UISearchDisplayController *)controller
 {
+    NSLog(@"here");
+    NSLog(@"SDVC:%@", NSStringFromCGRect(self.searchDisplayController.searchResultsTableView.frame));
+    NSLog(@"Table:%@", NSStringFromCGRect(self.tableView.frame));
     [controller.searchResultsTableView.superview bringSubviewToFront:controller.searchResultsTableView];
     [controller.searchResultsTableView reloadData];
     controller.searchResultsTableView.hidden = NO;
