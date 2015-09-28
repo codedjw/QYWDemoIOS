@@ -183,6 +183,9 @@
                                                     <state key="normal" title="立即预约挂号">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
+                                                    <connections>
+                                                        <segue destination="brS-bt-2PE" kind="push" id="hoM-sh-497"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -360,6 +363,9 @@
                     <nil key="simulatedStatusBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="545"/>
+                    <connections>
+                        <outlet property="selectHospital" destination="dfa-Uf-qZk" id="Noq-CT-CoJ"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="huI-5a-RaJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -611,8 +617,8 @@
                                     <action selector="segmentedControlChanged:" destination="t3o-XT-i9a" eventType="valueChanged" id="lGO-jy-tRU"/>
                                 </connections>
                             </segmentedControl>
-                            <containerView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="g0Z-q8-FVw">
-                                <rect key="frame" x="0.0" y="108" width="320" height="443"/>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g0Z-q8-FVw">
+                                <rect key="frame" x="0.0" y="108" width="320" height="411"/>
                             </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -643,7 +649,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KHL-L7-VRC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2432" y="-1312.5"/>
+            <point key="canvasLocation" x="2470" y="-1312"/>
         </scene>
         <!--Patient List Table View Controller-->
         <scene sceneID="1BU-do-Ib9">
@@ -738,7 +744,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8d4-an-EqJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3436" y="-2003"/>
+            <point key="canvasLocation" x="3352" y="-1993"/>
         </scene>
         <!--Patient Info Table View Controller-->
         <scene sceneID="0Bs-Xh-Qee">
@@ -849,7 +855,7 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="32011019830415XXXX" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dRA-23-vVx">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="32011019850415XXXX" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dRA-23-vVx">
                                                     <rect key="frame" x="131" y="11" width="181" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -972,10 +978,16 @@
                     </tableView>
                     <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="genderLabel" destination="7KB-p4-PD8" id="XtU-AO-Yn6"/>
+                        <outlet property="idcardLabel" destination="dRA-23-vVx" id="07Z-Nm-ROy"/>
+                        <outlet property="nameLabel" destination="pbM-mM-xwn" id="DMI-5K-OCg"/>
+                        <outlet property="phoneLabel" destination="JRo-M1-CaE" id="ahA-nT-CAT"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5dl-aF-mJe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2964" y="-2003"/>
+            <point key="canvasLocation" x="2898" y="-1993"/>
         </scene>
         <!--选择城市-->
         <scene sceneID="4r9-jX-yXH">
@@ -1029,7 +1041,43 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="2049" y="-1993"/>
+            <point key="canvasLocation" x="1994" y="-1993"/>
+        </scene>
+        <!--选择科室-->
+        <scene sceneID="yqp-Oq-aP1">
+            <objects>
+                <viewController id="brS-bt-2PE" customClass="DeptListViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="vN6-hX-lyh"/>
+                        <viewControllerLayoutGuide type="bottom" id="LvJ-ik-FFh"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="5C9-Sb-8qk">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="545"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CVb-3F-5Em">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="545"/>
+                                <state key="normal" backgroundImage="deptList">
+                                    <color key="titleShadowColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="Nf5-zc-bjs" kind="push" id="rSQ-9a-BMO"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="CVb-3F-5Em" firstAttribute="top" secondItem="vN6-hX-lyh" secondAttribute="bottom" id="Elu-Qv-dfl"/>
+                            <constraint firstAttribute="trailing" secondItem="CVb-3F-5Em" secondAttribute="trailing" id="Mls-MR-TqZ"/>
+                            <constraint firstItem="CVb-3F-5Em" firstAttribute="leading" secondItem="5C9-Sb-8qk" secondAttribute="leading" id="Wzs-H5-6bn"/>
+                            <constraint firstItem="LvJ-ik-FFh" firstAttribute="top" secondItem="CVb-3F-5Em" secondAttribute="bottom" id="rhi-Lb-qpj"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="选择科室" id="xhF-wM-9dM"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="glR-FI-3rp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2470" y="-596.5"/>
         </scene>
         <!--Home View Controller-->
         <scene sceneID="hNz-n2-bh7">
@@ -2369,10 +2417,82 @@
             </objects>
             <point key="canvasLocation" x="1517" y="-1993"/>
         </scene>
+        <!--心内科-->
+        <scene sceneID="mrm-JT-ycM">
+            <objects>
+                <viewController id="Nf5-zc-bjs" customClass="DeptListViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="deS-7H-7py"/>
+                        <viewControllerLayoutGuide type="bottom" id="LDB-eX-gAd"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="iOT-6h-bHX">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="545"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tM1-i3-v1e">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="545"/>
+                                <state key="normal" backgroundImage="doctorList">
+                                    <color key="titleShadowColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="twF-Vr-bWB" kind="push" id="0Q1-FA-wRC"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="tM1-i3-v1e" firstAttribute="top" secondItem="deS-7H-7py" secondAttribute="bottom" id="8bI-Om-zX7"/>
+                            <constraint firstAttribute="trailing" secondItem="tM1-i3-v1e" secondAttribute="trailing" id="HVm-5z-Oi1"/>
+                            <constraint firstItem="tM1-i3-v1e" firstAttribute="leading" secondItem="iOT-6h-bHX" secondAttribute="leading" id="VbY-sG-hSe"/>
+                            <constraint firstItem="LDB-eX-gAd" firstAttribute="top" secondItem="tM1-i3-v1e" secondAttribute="bottom" id="ZZK-mz-dhL"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="心内科" id="Zof-i7-tfq"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Zx3-UN-Ldb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2898" y="-596.5"/>
+        </scene>
+        <!--医生主页-->
+        <scene sceneID="Pnc-p9-eft">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="b4P-MD-T1H" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="twF-Vr-bWB" customClass="DoctorPageViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="OZ3-vT-C0C"/>
+                        <viewControllerLayoutGuide type="bottom" id="HZT-Z2-T7p"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="LHA-Xb-xeF">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="545"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gda-Hk-DM7">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="545"/>
+                                <state key="normal" backgroundImage="doctorPage">
+                                    <color key="titleShadowColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="gda-Hk-DM7" secondAttribute="trailing" id="IGG-1c-ZjY"/>
+                            <constraint firstItem="HZT-Z2-T7p" firstAttribute="top" secondItem="gda-Hk-DM7" secondAttribute="bottom" id="M1Z-kC-ZKZ"/>
+                            <constraint firstItem="gda-Hk-DM7" firstAttribute="leading" secondItem="LHA-Xb-xeF" secondAttribute="leading" id="VCo-mi-DCL"/>
+                            <constraint firstItem="gda-Hk-DM7" firstAttribute="top" secondItem="OZ3-vT-C0C" secondAttribute="bottom" id="kfl-ok-gbS"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="医生主页" id="BIp-10-Jmv"/>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="3352" y="-597"/>
+        </scene>
     </scenes>
     <resources>
         <image name="background" width="400" height="180"/>
         <image name="dangriguahao" width="75" height="75"/>
+        <image name="deptList" width="1111" height="1530"/>
+        <image name="doctorList" width="1124" height="1651"/>
+        <image name="doctorPage" width="1125" height="2001"/>
         <image name="home" width="30" height="28"/>
         <image name="hospital_small" width="30" height="31"/>
         <image name="info" width="32" height="32"/>

@@ -16,6 +16,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+//    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"userInfo"] != nil && [[[NSUserDefaults standardUserDefaults] objectForKey:@"userInfo"][@"name"] isEqualToString:@"李四"]) {
+//        self.selectedPID = 1;
+//    } else {
+//        self.selectedPID = 0;
+//    }
     self.selectedPID = 0;
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -37,6 +42,14 @@
     UITableViewCell *curCell = [tableView cellForRowAtIndexPath:indexPath];
     [curCell setAccessoryType:UITableViewCellAccessoryCheckmark];
     self.selectedPID = indexPath.row;
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if (self.selectedPID == 0) {
+        [defaults setObject:@{@"name":@"张三", @"idcardID":@"32011019850415XXXX", @"phone": @"138XXXXXXXX", @"gender":@"男"} forKey:@"userInfo"];
+    } else {
+        [defaults setObject:@{@"name":@"李四", @"idcardID":@"51012319900216XXXX", @"phone": @"139XXXXXXXX", @"gender":@"女"} forKey:@"userInfo"];
+    }
+    [defaults synchronize];
 }
 
 //#pragma mark - Table view data source

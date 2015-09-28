@@ -8,6 +8,7 @@
 
 #import "HomeViewController.h"
 #import "SearchResultTableViewCell.h"
+#import "HomeTableViewController.h"
 static NSString* const kSearchResultTableViewCellId = @"SearchResultTableViewCell";
 
 @interface HomeViewController ()<UISearchDisplayDelegate, UITableViewDataSource, UITableViewDelegate>

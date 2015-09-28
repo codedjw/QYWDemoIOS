@@ -12,6 +12,8 @@
 		CC065A241BB4265B00BBBAF3 /* HelperClass.m in Sources */ = {isa = PBXBuildFile; fileRef = CC065A231BB4265B00BBBAF3 /* HelperClass.m */; };
 		CC3300691BB4792E00456ED6 /* MeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC3300681BB4792E00456ED6 /* MeTableViewController.m */; };
 		CC567B381BB9ABD60017A9DB /* SearchProvinceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC567B371BB9ABD60017A9DB /* SearchProvinceViewController.m */; };
+		CC567B3B1BB9CEF10017A9DB /* DeptListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC567B3A1BB9CEF10017A9DB /* DeptListViewController.m */; };
+		CC567B3E1BB9D7460017A9DB /* DoctorPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC567B3D1BB9D7460017A9DB /* DoctorPageViewController.m */; };
 		CC582B591BB7EFE100CA3BB1 /* PatientRecordsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC582B581BB7EFE100CA3BB1 /* PatientRecordsTableViewController.m */; };
 		CC582B5F1BB7F97D00CA3BB1 /* RecordsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC582B5E1BB7F97D00CA3BB1 /* RecordsViewController.m */; };
 		CC582B621BB7FE3D00CA3BB1 /* AddNewPatientTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC582B611BB7FE3D00CA3BB1 /* AddNewPatientTableViewController.m */; };
@@ -50,6 +52,10 @@
 		CC3300681BB4792E00456ED6 /* MeTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MeTableViewController.m; path = Views/MeTableViewController.m; sourceTree = "<group>"; };
 		CC567B361BB9ABD60017A9DB /* SearchProvinceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SearchProvinceViewController.h; path = Views/SearchProvinceViewController.h; sourceTree = "<group>"; };
 		CC567B371BB9ABD60017A9DB /* SearchProvinceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SearchProvinceViewController.m; path = Views/SearchProvinceViewController.m; sourceTree = "<group>"; };
+		CC567B391BB9CEF10017A9DB /* DeptListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DeptListViewController.h; path = Views/DeptListViewController.h; sourceTree = "<group>"; };
+		CC567B3A1BB9CEF10017A9DB /* DeptListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DeptListViewController.m; path = Views/DeptListViewController.m; sourceTree = "<group>"; };
+		CC567B3C1BB9D7460017A9DB /* DoctorPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DoctorPageViewController.h; path = Views/DoctorPageViewController.h; sourceTree = "<group>"; };
+		CC567B3D1BB9D7460017A9DB /* DoctorPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DoctorPageViewController.m; path = Views/DoctorPageViewController.m; sourceTree = "<group>"; };
 		CC582B571BB7EFE100CA3BB1 /* PatientRecordsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PatientRecordsTableViewController.h; path = Views/PatientRecordsTableViewController.h; sourceTree = "<group>"; };
 		CC582B581BB7EFE100CA3BB1 /* PatientRecordsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PatientRecordsTableViewController.m; path = Views/PatientRecordsTableViewController.m; sourceTree = "<group>"; };
 		CC582B5D1BB7F97D00CA3BB1 /* RecordsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RecordsViewController.h; path = Views/RecordsViewController.h; sourceTree = "<group>"; };
@@ -137,6 +143,10 @@
 				CC582B681BB856B200CA3BB1 /* SearchResultTableViewCell.xib */,
 				CC567B361BB9ABD60017A9DB /* SearchProvinceViewController.h */,
 				CC567B371BB9ABD60017A9DB /* SearchProvinceViewController.m */,
+				CC567B391BB9CEF10017A9DB /* DeptListViewController.h */,
+				CC567B3A1BB9CEF10017A9DB /* DeptListViewController.m */,
+				CC567B3C1BB9D7460017A9DB /* DoctorPageViewController.h */,
+				CC567B3D1BB9D7460017A9DB /* DoctorPageViewController.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -307,6 +317,7 @@
 				DDB4CF231BB2B4FD00E9FAD3 /* HomeTableViewController.m in Sources */,
 				DD0632731BB2739700686572 /* AppDelegate.m in Sources */,
 				CC065A1D1BB3EC7B00BBBAF3 /* EditPatientViewController.m in Sources */,
+				CC567B3E1BB9D7460017A9DB /* DoctorPageViewController.m in Sources */,
 				DD0632701BB2739700686572 /* main.m in Sources */,
 				CC065A241BB4265B00BBBAF3 /* HelperClass.m in Sources */,
 				CC582B691BB856B200CA3BB1 /* SearchResultTableViewCell.m in Sources */,
@@ -314,6 +325,7 @@
 				CC582B651BB80A3300CA3BB1 /* MsgViewController.m in Sources */,
 				CC3300691BB4792E00456ED6 /* MeTableViewController.m in Sources */,
 				CC582B621BB7FE3D00CA3BB1 /* AddNewPatientTableViewController.m in Sources */,
+				CC567B3B1BB9CEF10017A9DB /* DeptListViewController.m in Sources */,
 				DDB4CF201BB2847900E9FAD3 /* HomeViewController.m in Sources */,
 				CC7899181BB5312E000BE46E /* PatientInfoTableViewController.m in Sources */,
 				CC567B381BB9ABD60017A9DB /* SearchProvinceViewController.m in Sources */,

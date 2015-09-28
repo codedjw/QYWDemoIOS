@@ -22,6 +22,7 @@ static NSString* const kHomeItemCell = @"HomeItemCell";
 @interface HomeTableViewController ()<UICollectionViewDataSource, UICollectionViewDelegate>
 @property(nonatomic, strong)NSArray* homeItems;
 - (IBAction)editPatientInfo:(id)sender;
+@property (weak, nonatomic) IBOutlet UILabel *selectHospital;
 @end
 
 @implementation HomeTableViewController
@@ -33,11 +34,19 @@ static NSString* const kHomeItemCell = @"HomeItemCell";
     
     NSString* url = [[NSBundle mainBundle] pathForResource:@"" ofType:@"plist"];
     self.homeItems = [NSArray arrayWithContentsOfFile:url];
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    NSString *hstr = [[NSUserDefaults standardUserDefaults] objectForKey:@"SelectHospital"];
+    self.selectHospital.text = (hstr == nil) ? @"请选择" : hstr;
 }
 
 - (void)didReceiveMemoryWarning {
