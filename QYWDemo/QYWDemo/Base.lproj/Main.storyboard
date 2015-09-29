@@ -31,16 +31,7 @@
                                                                 <constraint firstAttribute="height" constant="90" id="yXa-m3-znO"/>
                                                             </constraints>
                                                         </imageView>
-                                                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wf1-fC-oag">
-                                                            <rect key="frame" x="86" y="67" width="234" height="21"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="height" constant="21" id="oqV-89-RLu"/>
-                                                            </constraints>
-                                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zcC-0v-Swo">
+                                                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zcC-0v-Swo">
                                                             <rect key="frame" x="116" y="59" width="73" height="26"/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <constraints>
@@ -67,7 +58,7 @@
                                                                 <segue destination="t3o-XT-i9a" kind="push" id="hoH-MA-AxN"/>
                                                             </connections>
                                                         </button>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eBD-xe-qTp">
+                                                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eBD-xe-qTp">
                                                             <rect key="frame" x="213" y="59" width="70" height="26"/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
@@ -76,6 +67,15 @@
                                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                             </state>
                                                         </button>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wf1-fC-oag">
+                                                            <rect key="frame" x="106" y="59" width="214" height="21"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="21" id="oqV-89-RLu"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
@@ -87,8 +87,8 @@
                                                         <constraint firstItem="eBD-xe-qTp" firstAttribute="height" secondItem="zcC-0v-Swo" secondAttribute="height" id="GK6-d7-Mcw"/>
                                                         <constraint firstAttribute="trailing" secondItem="83o-Yy-Rec" secondAttribute="trailing" id="N56-Qo-d8a"/>
                                                         <constraint firstItem="sja-og-kIp" firstAttribute="top" secondItem="5HC-lD-pjO" secondAttribute="top" constant="32" id="Qo2-yw-8AU"/>
-                                                        <constraint firstItem="83o-Yy-Rec" firstAttribute="bottom" secondItem="Wf1-fC-oag" secondAttribute="bottom" constant="2" id="XOU-O7-6Ah"/>
-                                                        <constraint firstItem="Wf1-fC-oag" firstAttribute="leading" secondItem="sja-og-kIp" secondAttribute="trailing" constant="-4" id="ah3-ot-gbQ"/>
+                                                        <constraint firstItem="83o-Yy-Rec" firstAttribute="bottom" secondItem="Wf1-fC-oag" secondAttribute="bottom" constant="10" id="XOU-O7-6Ah"/>
+                                                        <constraint firstItem="Wf1-fC-oag" firstAttribute="leading" secondItem="sja-og-kIp" secondAttribute="trailing" constant="16" id="ah3-ot-gbQ"/>
                                                         <constraint firstItem="83o-Yy-Rec" firstAttribute="leading" secondItem="5HC-lD-pjO" secondAttribute="leading" id="dAG-Lp-sFY"/>
                                                         <constraint firstItem="zcC-0v-Swo" firstAttribute="top" secondItem="5HC-lD-pjO" secondAttribute="top" constant="59" id="g1X-ff-D3Z"/>
                                                         <constraint firstItem="eBD-xe-qTp" firstAttribute="width" secondItem="zcC-0v-Swo" secondAttribute="width" constant="-3" id="ktz-JO-gB0"/>
@@ -365,6 +365,7 @@
                     <size key="freeformSize" width="320" height="545"/>
                     <connections>
                         <outlet property="selectHospital" destination="dfa-Uf-qZk" id="Noq-CT-CoJ"/>
+                        <outlet property="selectPatient" destination="Wf1-fC-oag" id="JGx-dg-ceU"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="huI-5a-RaJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -603,10 +604,10 @@
                         <viewControllerLayoutGuide type="bottom" id="QTm-98-QJi"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Id6-Cf-7Gy">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="545"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="eG5-ce-PUf">
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="eG5-ce-PUf">
                                 <rect key="frame" x="16" y="72" width="288" height="29"/>
                                 <segments>
                                     <segment title="个人信息维护"/>
@@ -617,7 +618,7 @@
                                     <action selector="segmentedControlChanged:" destination="t3o-XT-i9a" eventType="valueChanged" id="lGO-jy-tRU"/>
                                 </connections>
                             </segmentedControl>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g0Z-q8-FVw">
+                            <containerView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="g0Z-q8-FVw">
                                 <rect key="frame" x="0.0" y="108" width="320" height="411"/>
                             </containerView>
                         </subviews>
@@ -1156,6 +1157,7 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="searchDisplayController" destination="7Tj-lI-Kl1" id="WnJ-Ph-HuV"/>
+                        <outlet property="selectPlace" destination="dNg-fN-cby" id="smM-b1-tZu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
@@ -2519,6 +2521,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="Dbs-qO-uiN"/>
+        <segue reference="hoH-MA-AxN"/>
     </inferredMetricsTieBreakers>
 </document>

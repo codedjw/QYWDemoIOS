@@ -29,6 +29,7 @@
 }
 - (IBAction)selectAction:(id)sender {
     [self.parentViewController dismissViewControllerAnimated:YES completion:nil];
+    [[NSUserDefaults standardUserDefaults] setObject:@"南京" forKey:@"selectPlace"];
 }
 
 /*

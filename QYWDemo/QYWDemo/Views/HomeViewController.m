@@ -14,6 +14,7 @@ static NSString* const kSearchResultTableViewCellId = @"SearchResultTableViewCel
 @interface HomeViewController ()<UISearchDisplayDelegate, UITableViewDataSource, UITableViewDelegate>
 @property(nonatomic, strong)NSArray* searchResults;
 @property(nonatomic, strong)NSArray* originalResults;
+@property (weak, nonatomic) IBOutlet UIButton *selectPlace;
 @end
 
 @implementation HomeViewController
@@ -33,6 +34,13 @@ static NSString* const kSearchResultTableViewCellId = @"SearchResultTableViewCel
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:YES animated:animated];
     
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *select = [defaults objectForKey:@"selectPlace"];
+    if (select != nil) {
+        [self.selectPlace setTitle:select forState:UIControlStateNormal];
+    } else {
+        [self.selectPlace setTitle:@"请选择" forState:UIControlStateNormal];
+    }
 }
 
 - (void)didReceiveMemoryWarning {

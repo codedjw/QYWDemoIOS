@@ -23,6 +23,7 @@ static NSString* const kHomeItemCell = @"HomeItemCell";
 @property(nonatomic, strong)NSArray* homeItems;
 - (IBAction)editPatientInfo:(id)sender;
 @property (weak, nonatomic) IBOutlet UILabel *selectHospital;
+@property (weak, nonatomic) IBOutlet UILabel *selectPatient;
 @end
 
 @implementation HomeTableViewController
@@ -47,6 +48,13 @@ static NSString* const kHomeItemCell = @"HomeItemCell";
     [super viewWillAppear:animated];
     NSString *hstr = [[NSUserDefaults standardUserDefaults] objectForKey:@"SelectHospital"];
     self.selectHospital.text = (hstr == nil) ? @"请选择" : hstr;
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if ([defaults objectForKey:@"welcomeMsg"] != nil) {
+        self.selectPatient.text = [defaults objectForKey:@"welcomeMsg"];
+    } else {
+        self.selectPatient.text = @"张三，欢迎您！";
+    }
 }
 
 - (void)didReceiveMemoryWarning {
