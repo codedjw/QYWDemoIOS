@@ -8,20 +8,25 @@
 
 #import "PatientListTableViewController.h"
 
+static NSString * const kPatientItemCellID = @"PatientItemCell";
+@interface PatientItemCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *detailLabel;
+@end
+
+@implementation PatientItemCell
+@end
+
+
 @interface PatientListTableViewController ()
 @property NSInteger selectedPID;
+//@property (nonatomic, strong) NSArray *patients;
 @end
 
 @implementation PatientListTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"userInfo"] != nil && [[[NSUserDefaults standardUserDefaults] objectForKey:@"userInfo"][@"name"] isEqualToString:@"李四"]) {
-//        self.selectedPID = 1;
-//    } else {
-//        self.selectedPID = 0;
-//    }
-    self.selectedPID = 0;
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -29,9 +34,47 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+//    self.patients = @[@{@"name":@"张三", @"idcardID":@"32011019850415XXXX", @"phone": @"138XXXXXXXX", @"gender":@"男"}, @{@"name":@"李四", @"idcardID":@"51012319900216XXXX", @"phone": @"139XXXXXXXX", @"gender":@"女"}];
+    
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"userInfo"] != nil && [[[NSUserDefaults standardUserDefaults] objectForKey:@"userInfo"][@"name"] isEqualToString:@"李四"]) {
+        self.selectedPID = 1;
+    } else {
+        self.selectedPID = 0;
+    }
+    
+    [self.tableView reloadData];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 2;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    PatientItemCell *cell = (PatientItemCell *)[tableView dequeueReusableCellWithIdentifier:kPatientItemCellID forIndexPath:indexPath];
+    
+    if (indexPath.row == 0) {
+        cell.nameLabel.text = @"张三";
+        cell.detailLabel.text = @"男 / 30岁";
+    }
+    if (indexPath.row == 1) {
+        cell.nameLabel.text = @"李四";
+        cell.detailLabel.text = @"女 / 25岁";
+    }
+    
+    if (indexPath.row == self.selectedPID) {
+        [cell setAccessoryType:UITableViewCellAccessoryCheckmark];
+    }
+    return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -46,8 +89,10 @@
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     if (self.selectedPID == 0) {
         [defaults setObject:@{@"name":@"张三", @"idcardID":@"32011019850415XXXX", @"phone": @"138XXXXXXXX", @"gender":@"男"} forKey:@"userInfo"];
+        [defaults setObject:@"张三，欢迎您！" forKey:@"welcomeMsg"];
     } else {
         [defaults setObject:@{@"name":@"李四", @"idcardID":@"51012319900216XXXX", @"phone": @"139XXXXXXXX", @"gender":@"女"} forKey:@"userInfo"];
+         [defaults setObject:@"李四，欢迎您！" forKey:@"welcomeMsg"];
     }
     [defaults synchronize];
 }

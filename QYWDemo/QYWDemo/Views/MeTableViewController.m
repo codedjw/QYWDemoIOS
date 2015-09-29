@@ -9,6 +9,7 @@
 #import "MeTableViewController.h"
 
 @interface MeTableViewController ()
+@property (weak, nonatomic) IBOutlet UILabel *welcomeMsg;
 
 @end
 
@@ -22,6 +23,17 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if ([defaults objectForKey:@"welcomeMsg"] != nil) {
+        self.welcomeMsg.text = [defaults objectForKey:@"welcomeMsg"];
+    } else {
+        self.welcomeMsg.text = @"张三，欢迎您！";
+    }
 }
 
 - (void)didReceiveMemoryWarning {

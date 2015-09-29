@@ -21,16 +21,21 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    NSDictionary *dict = ([[NSUserDefaults standardUserDefaults] objectForKey:@"userInfo"] == nil) ? @{@"name":@"张三", @"idcardID":@"32011019850415XXXX", @"phone": @"138XXXXXXXX", @"gender":@"男"} : [[NSUserDefaults standardUserDefaults] objectForKey:@"userInfo"];
-    self.nameLabel.text = dict[@"name"];
-    self.idcardLabel.text = dict[@"idcardID"];
-    self.phoneLabel.text = dict[@"phone"];
-    self.genderLabel.text = dict[@"gender"];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    NSDictionary *dict = ([[NSUserDefaults standardUserDefaults] objectForKey:@"userInfo"] == nil) ? @{@"name":@"张三", @"idcardID":@"32011019850415XXXX", @"phone": @"138XXXXXXXX", @"gender":@"男"} : [[NSUserDefaults standardUserDefaults] objectForKey:@"userInfo"];
+    self.nameLabel.text = dict[@"name"];
+    self.idcardLabel.text = dict[@"idcardID"];
+    self.phoneLabel.text = dict[@"phone"];
+    self.genderLabel.text = dict[@"gender"];
 }
 
 - (void)didReceiveMemoryWarning {
