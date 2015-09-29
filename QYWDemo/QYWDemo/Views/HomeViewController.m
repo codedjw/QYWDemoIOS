@@ -11,7 +11,7 @@
 #import "HomeTableViewController.h"
 static NSString* const kSearchResultTableViewCellId = @"SearchResultTableViewCell";
 
-@interface HomeViewController ()<UISearchDisplayDelegate, UITableViewDataSource, UITableViewDelegate>
+@interface HomeViewController ()<UISearchDisplayDelegate, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate>
 @property(nonatomic, strong)NSArray* searchResults;
 @property(nonatomic, strong)NSArray* originalResults;
 @property (weak, nonatomic) IBOutlet UIButton *selectPlace;
@@ -22,6 +22,7 @@ static NSString* const kSearchResultTableViewCellId = @"SearchResultTableViewCel
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.searchDisplayController.searchBar.delegate = self;
     UITextField *searchField = [self.searchDisplayController.searchBar valueForKey:@"_searchField"];
     searchField.textColor = [UIColor whiteColor];
     [searchField setValue:[UIColor whiteColor] forKeyPath:@"_placeholderLabel.textColor"];
@@ -149,6 +150,16 @@ static NSString* const kSearchResultTableViewCellId = @"SearchResultTableViewCel
     NSLog(@"🔦 | will hide table");
     [self.tabBarController.tabBar setHidden:NO];
 }
+
+// ------------ remove later ----------
+#pragma mark UISearchBarDelegate------点击搜索button
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
+    if ([searchBar.text isEqualToString:@"上海市闵行区中心医院"]) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"搜索到“上海市闵行区中心医院”在上海市，是否切换定位？" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:@"取消",nil];
+        [alert show];
+    }
+}
+
 - (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString {
     NSLog(@"🔦 | should reload table for search string?");
     
